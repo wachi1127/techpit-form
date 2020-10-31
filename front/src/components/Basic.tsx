@@ -16,6 +16,7 @@ import { RootState } from '../domain/entity/rootState';
 
 import { Profile } from '../domain/entity/profile';
 import { PROFILE } from '../domain/services/profile';
+import { Gender } from '../domain/entity/gender';
 import profileActions from '../store/profile/actions';
 
 const Basic = () => {
@@ -50,7 +51,10 @@ const Basic = () => {
       <FormControl className={classes.formField}>
         <FormLabel>{PROFILE.GENDER}</FormLabel>
         {/* ラジオボタン */}
-        <RadioGroup>
+        <RadioGroup
+          value={profile.gender}
+          onChange={(e) => handleChange({ gender: e.target.value as Gender })}
+        >
           <FormControlLabel
             value="male"
             label="男性"
