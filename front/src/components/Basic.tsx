@@ -2,7 +2,14 @@
 import React from 'react';
 // reduxに接続
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField } from '@material-ui/core';
+import {
+  TextField,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from '@material-ui/core';
 
 import useStyles from './styles';
 import { RootState } from '../domain/entity/rootState';
@@ -40,6 +47,22 @@ const Basic = () => {
         value={profile.description}
         onChange={(e) => handleChange({ description: e.target.value })}
       />
+      <FormControl className={classes.formField}>
+        <FormLabel>{PROFILE.GENDER}</FormLabel>
+        {/* ラジオボタン */}
+        <RadioGroup>
+          <FormControlLabel
+            value="male"
+            label="男性"
+            control={<Radio color="primary" />}
+          />
+          <FormControlLabel
+            value="female"
+            label="女性"
+            control={<Radio color="primary" />}
+          />
+        </RadioGroup>
+      </FormControl>
     </>
   );
 };
