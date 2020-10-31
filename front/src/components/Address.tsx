@@ -10,6 +10,8 @@ import { Address as IAddress } from '../domain/entity/address';
 
 import profileActions from '../store/profile/actions';
 
+import { isPostalcode } from '../domain/services/address';
+
 import useStyles from './styles';
 
 const Address = () => {
@@ -23,6 +25,13 @@ const Address = () => {
     dispatch(profileActions.setAddress(member));
   };
 
+  const handlePostalcodeChange = (code: string) => {
+    // 正規表現でチェックしてfalseだったらreturn
+    if (!isPostalcode(code)) return;
+
+    dispatch(profileActions.setAddress({ postalcode: code }));
+  };
+
   return (
     <>
       <TextField
@@ -30,7 +39,8 @@ const Address = () => {
         className={classes.formField}
         label={PROFILE.ADDRESS.POSTALCODE}
         value={profile.address.postalcode}
-        onChange={(e) => handleAddressChange({ postalcode: e.target.value })}
+        // 郵便番号は正しい形式かチェックを入れる
+        onChange={(e) => handlePostalcodeChange(e.target.value)}
       />
       <TextField
         fullWidth
