@@ -6,6 +6,7 @@ import { Container, Typography } from '@material-ui/core';
 import Basic from './Basic';
 import useStyles from './styles';
 import Address from './Address';
+import Career from './Career';
 
 const Profile = () => {
   const classes = useStyles();
@@ -31,6 +32,15 @@ const Profile = () => {
         住所
       </Typography>
       <Address />
+      <Typography
+        variant="h4"
+        component="h2"
+        className={classes.title}
+        color="primary"
+      >
+        職歴
+      </Typography>
+      <Career />
     </Container>
   );
 };
