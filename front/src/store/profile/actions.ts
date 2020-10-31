@@ -1,4 +1,3 @@
-import { profile } from 'console';
 import actionCreatorFactory from 'typescript-fsa';
 import { Profile } from '../../domain/entity/profile';
 
