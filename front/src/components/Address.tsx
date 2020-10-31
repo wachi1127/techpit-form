@@ -12,6 +12,8 @@ import profileActions from '../store/profile/actions';
 
 import { isPostalcode } from '../domain/services/address';
 
+import { searchAddressFromPostalcode } from '../store/profile/effects';
+
 import useStyles from './styles';
 
 const Address = () => {
@@ -24,12 +26,14 @@ const Address = () => {
   const handleAddressChange = (member: Partial<IAddress>) => {
     dispatch(profileActions.setAddress(member));
   };
-
+  // 郵便番号の値設定
   const handlePostalcodeChange = (code: string) => {
     // 正規表現でチェックしてfalseだったらreturn
     if (!isPostalcode(code)) return;
 
     dispatch(profileActions.setAddress({ postalcode: code }));
+    // APIを叩いて住所取得してstateにセットする処理
+    dispatch(searchAddressFromPostalcode(code));
   };
 
   return (
