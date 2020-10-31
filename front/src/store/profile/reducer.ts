@@ -36,6 +36,10 @@ const profileReducer = reducerWithInitialState(init)
     // ...state.addressでまずこれまでのstate（今現在入れてない住所のstate）を展開
     // 次にpayloadを展開することで、いま値を入れているaddressのプロパティのみ書き換え
     address: { ...state.address, ...payload },
+  }))
+  .case(profileActions.searchAddress.done, (state, payload) => ({
+    ...state,
+    address: { ...state.address, ...payload.result },
   }));
 
 export default profileReducer;
