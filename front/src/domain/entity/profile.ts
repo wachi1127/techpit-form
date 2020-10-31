@@ -1,5 +1,6 @@
 import { Address } from './address';
 import { Gender } from './gender';
+import { Career } from './career';
 // typeというシンタックスを使用することで任意のデータ構造を定義できる
 // つまりこいつはProfile型
 export type Profile = {
@@ -10,4 +11,5 @@ export type Profile = {
   gender: Gender;
   // Address型の住所
   address: Address;
+  careers: Career[];
 };
